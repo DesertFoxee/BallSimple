@@ -18,7 +18,7 @@ class Game {
 		void handleKeyboardUniq(const sf::Keyboard::Key key, bool state);
 		void handleMouse(const sf::Mouse::Button btn, bool state);
 		void handleMouseUniq(const sf::Mouse::Button btn, bool state);
-		void handleMouseScrolled(const sf::Mouse::Wheel wheel , float deltascr);
+		void handleMouseScrolled(const sf::Mouse::Wheel wheel , int deltascr);
 		void processBall();
 		void update();
 		void process();

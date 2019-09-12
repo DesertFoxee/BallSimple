@@ -1,5 +1,6 @@
-#ifndef MOUSE_H
-#define MOUSE_H
+
+#ifndef MOUSEMANAGER_H
+#define MOUSEMANAGER_H
 
 #include <memory>
 #include <vector>
@@ -7,15 +8,17 @@
 #include <iostream>
 
 /*
-
 	-Get number Mouse in enum class using Complie = current line - begin line - space
-
 */
+#define MIN_ZOOM 1
+
+#define MAX_ZOOM 20
 
 
 constexpr auto BEGIN_MOUSE = __LINE__;
 namespace MOUSE {
-	enum class MOUSE_B {
+	enum class MOUSE_B
+	{
 		RIGHT,
 		LEFT,
 		MIDDLE,
@@ -23,55 +26,54 @@ namespace MOUSE {
 	};
 	constexpr static auto COUNT_MOUSE_B = __LINE__ - BEGIN_MOUSE - 4;
 
-	enum class MOUSE_E {
+	enum class MOUSE_E
+	{
 	};
 };
 
 
-class Mouse {
+class Mouse
+{
 public:
 	~Mouse();
 
-	static Mouse& getIntance() {
-		if(instance == nullptr) {
+	static Mouse& getIntance()
+	{
+		if (instance == nullptr) {
 			instance = std::unique_ptr<Mouse>(new Mouse());
 		}
 		return *instance;
 	}
-	
+
 
 	sf::Vector2i getMouseScreen();
 	sf::Vector2i getMouseWindow(const sf::Window& window);
 
 
-	void setMouseScreen(const sf::Vector2i& pos );
-	void setMouseWindow(const sf::Window& window ,const sf::Vector2i& pos);
+	void setMouseScreen(const sf::Vector2i& pos);
+	void setMouseWindow(const sf::Window& window, const sf::Vector2i& pos);
 
 
-	
 	void show();
 	void showMousePos();
 
 	// procee wheel moose ;
-
-	void zoomin() { mouse_zoom++; };
-	void zoomout() { (mouse_zoom > 0) ? mouse_zoom-- : mouse_zoom; };
+	void Zoom(int delta = 1);
 	int getZoom() { return Mouse::mouse_zoom; };
+	void resetZoom() { mouse_zoom = MIN_ZOOM; }
 
 
 	// process mouse real ;
 
-	void reset_real();
+	void resetMouseReal();
 	void setStateMouse(MOUSE::MOUSE_B mousekey, bool state);
 	bool getStateMouse(MOUSE::MOUSE_B mousekey);
 
 	// process unique_mouse 
 
-	void reset_unique();
+	void resetMouseUniq();
 	bool getStateMouseUniq(MOUSE::MOUSE_B mousekey);
-	void setStateMouseUniq(MOUSE::MOUSE_B mousekey , bool state);
-
-
+	void setStateMouseUniq(MOUSE::MOUSE_B mousekey, bool state);
 private:
 	Mouse();
 	static sf::Vector2i pos;
@@ -83,6 +85,6 @@ private:
 };
 
 
-#endif // !MOUSE_H
+#endif // !MOUSEMANAGER_H
 
 

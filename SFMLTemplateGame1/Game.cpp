@@ -110,7 +110,7 @@ void Game::handleMouseUniq(const sf::Mouse::Button btn, bool state) {
 	}
 }
 
-void Game::handleMouseScrolled(const sf::Mouse::Wheel wheel , float deltascr) {
+void Game::handleMouseScrolled(const sf::Mouse::Wheel wheel , int deltascr) {
 	switch(wheel) {
 		case sf::Mouse::VerticalWheel:
 			std::cout << "Mouse Wheel vertical" << std::endl;
@@ -121,8 +121,7 @@ void Game::handleMouseScrolled(const sf::Mouse::Wheel wheel , float deltascr) {
 		default:
 			break;
 	}
-	(deltascr == -1) ? Mouse::getIntance().zoomout() : Mouse::getIntance().zoomin();
-	std::cout << "Wheel scroll : " << Mouse::getIntance().getZoom() << std::endl;
+	Mouse::getIntance().Zoom(deltascr);
 }
 
 void Game::processBall() {
@@ -150,11 +149,11 @@ void Game::process() {
 	sf::Event event;
 
 	if(isKeyPressed) {
-		Keyboard::getIntance().reset_unique();
+		Keyboard::getIntance().resetUniq();
 		isKeyPressed = false;
 	}
 	if(isMouseClick) {
-		Mouse::getIntance().reset_unique();
+		Mouse::getIntance().resetMouseUniq();
 		isMouseClick = false;
 	}
 
@@ -187,7 +186,7 @@ void Game::process() {
 				break;
 
 			case sf::Event::MouseWheelScrolled:
-				this->handleMouseScrolled(event.mouseWheelScroll.wheel ,event.mouseWheelScroll.delta);
+				this->handleMouseScrolled(event.mouseWheelScroll.wheel ,event.mouseWheel.delta);
 				break;
 			default:
 				break;

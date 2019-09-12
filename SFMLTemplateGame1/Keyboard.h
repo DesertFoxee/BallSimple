@@ -1,5 +1,5 @@
-#ifndef KEYBOARD_H
-#define KEYBOARD_H
+#ifndef KEYBOARDMANAGER_H
+#define KEYBOARDMANAGER_H
 
 #include <memory>
 #include <vector>
@@ -8,7 +8,7 @@
 
 /*
 
-	-Get number keyboard in enum class using Complie = current line - begin line - space 
+	-Get number keyboard in enum class using Complie = current line - begin line - space
 
 
 */
@@ -16,8 +16,10 @@
 
 
 constexpr auto BEGIN_KEYBOARD = __LINE__;
-namespace KEYBOARD {
-	enum class KEY_B {
+namespace KEYBOARD
+{
+	enum class KEY_B
+	{
 		UP,
 		DOWN,
 		LEFT,
@@ -27,32 +29,38 @@ namespace KEYBOARD {
 	};
 	constexpr static auto COUNT_KEY_B = __LINE__ - BEGIN_KEYBOARD - 4;
 
-	enum class KEY_E {
+	enum class KEY_E
+	{
 		COUNT
 	};
 }
 
 
-
-
-class Keyboard {
+class Keyboard
+{
 public:
 	~Keyboard();
 
-	static Keyboard& getIntance() {
-		if(instance == nullptr) {
+	static Keyboard& getIntance()
+	{
+		if (instance == nullptr) {
 			instance = std::unique_ptr<Keyboard>(new Keyboard());
 		}
 		return *instance;
 	}
 
-	//when key enter pressed or released
 
-	void setStateKeyboard(KEYBOARD::KEY_B key , bool state);
+	//using for keyboard one click
+	void resetUniq();
+	void setStateKeyboardUniq(KEYBOARD::KEY_B key, bool state);
+	bool getStateKeyBoardUniq(KEYBOARD::KEY_B key);
 
+	// using for keyboard real_time 
+	void setStateKeyboard(KEYBOARD::KEY_B key, bool state);
 	bool getStateKeyBoard(KEYBOARD::KEY_B key);
+	void resetReal();
 
-	void reset();
+	// function test
 
 	void show();
 
@@ -60,14 +68,11 @@ private:
 	Keyboard();
 
 	std::vector<bool> keyboard;
+	std::vector<bool> keyboard_uniq;
 
 	static std::unique_ptr<Keyboard> instance;
 };
 
-
-
-
-
-#endif // !KEYBOARD_H
+#endif // !KEYBOARDMANAGER_H
 
 
