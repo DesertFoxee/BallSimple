@@ -62,7 +62,7 @@ void Ball::applyForce(Vector2D force) {
 void Ball::applyForceDecrease(Vector2D& force) {
 	obj.acc += (obj.mass != 0) ? (force / obj.mass) : (Vector2D(0, 0));
 	force /=(obj.mass);
-	if(force.mag() < 5.0f)
+	if(force.mag() < 7.0f)
 		force = Vector2D(0, 0);
 }
 
@@ -148,7 +148,7 @@ void Ball::process(sf::RenderWindow& window) {
 
 		Vector2D c = Vector2D(thrust[1].position - thrust[0].position);
 
-		if(c.mag() < 5.f) {
+		if(c.mag() < 7.f) {
 			this->f_pull_force =  v_pull_force.normalize()* v_pull_force.mag()*v_pull_force.mag() * (obj.mass/2);
 			this->resetBallPull();
 		}
