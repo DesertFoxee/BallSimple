@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Other">
+      <UniqueIdentifier>{b0351601-6090-4794-af4e-a1e6a7bbf215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{1e2c3706-7df5-45c8-bf81-fd8daea72450}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{12ca88a3-8178-4858-ab49-4713eae9531b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include\ResouceHolder">
+      <UniqueIdentifier>{48c0f59a-f901-4eea-88ca-ffc1eee25673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\src\ResouceHolder">
+      <UniqueIdentifier>{44a94dfc-f3cc-44fe-a2d0-c14d1d8fde35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{61924fca-fcac-46ea-8aa6-abf4802a9fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\image">
+      <UniqueIdentifier>{3975fe83-a9a5-475a-b7b5-70313cc1ef88}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Helper.h">
+      <Filter>Header Files\include</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Convert.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Random.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="ParaObject.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="FontsManager.cpp">
+      <Filter>Source Files\src\ResouceHolder</Filter>
+    </ClCompile>
+    <ClCompile Include="ExternalForce.cpp">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="openal32.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-audio-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-audio-d-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-graphics-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-graphics-d-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-network-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-network-d-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-system-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-system-d-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-window-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+    <None Include="sfml-window-d-2.dll">
+      <Filter>Header Files\Other</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Convert.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Random.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="ParaObject.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="ExternalForce.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Asset.h">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FontsManager.h">
+      <Filter>Header Files\include\ResouceHolder</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameBall.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Debug\Assets\image\image1.jpg">
+      <Filter>Assets\image</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
