@@ -36,7 +36,6 @@ private:
 	Vector2D f_pull_force;
 	Vector2D a_pull_force;
 	Vector2D v_pull_force;
-	bool check;
 	float mag;
 };
 

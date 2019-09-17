@@ -28,7 +28,6 @@ void Ball::init(Vector2D loc, float mass, float radius) {
 	for(auto i = 0; i < STATE_COUNT; i++) {
 		state[i] = false;
 	}
-	check = false;
 
 	f_pull_force = Vector2D(0, 0);
 	
@@ -88,6 +87,7 @@ void Ball::checkEdge() {
 }
 
 void Ball::render(sf::RenderWindow & window) {
+
 	window.draw(ball);
 	window.draw(thrust , 2 ,sf::Lines);
 }
@@ -98,7 +98,6 @@ void Ball::resetBallPull() {
 	a_pull_force = Vector2D(0, 0);
 	v_pull_force = Vector2D(0, 0);
 	state[StateBall::pull_force] = false;
-	check = false;
 }
 
 void Ball::process(sf::RenderWindow& window) {
@@ -114,14 +113,36 @@ void Ball::process(sf::RenderWindow& window) {
 			this->thrust[0].position = ball.getPosition() + sf::Vector2f(contain.width / 2, contain.height / 2);
 			this->thrust[1].position = ball.getPosition() + sf::Vector2f(contain.width / 2, contain.height / 2);
 			state[StateBall::pull_force] = true;
-			check = true;
 		}
 		else if(state[StateBall::pull_force]) {
 			this->thrust[0].position = ball.getPosition() + sf::Vector2f(contain.width / 2, contain.height / 2);
 			this->thrust[1].position = sf::Vector2f(float(translated_pos.x), float(translated_pos.y));
 			this->a_pull_force = Vector2D(thrust[1].position - thrust[0].position).normalize() / 50;
 		}
+	}	
+	else if(state[StateBall::pull_force]) {
+		auto contain = ball.getGlobalBounds();
+
+		v_pull_force += a_pull_force;
+		thrust[0].position += v_pull_force.toVec2f();
+
+		obj.loc = thrust[0].position - sf::Vector2f(contain.width / 2, contain.height / 2);
+
+		Vector2D c = Vector2D(thrust[1].position - thrust[0].position);
+
+		if (c.mag() < 7.f) {
+			this->f_pull_force = v_pull_force.normalize() * v_pull_force.mag() * v_pull_force.mag() * (obj.mass / 2);
+			this->resetBallPull();
+		}
 	}
+	//else if (state[StateBall::pull_force]) {
+	//	auto mouse_pos = Mouse::getIntance().getMouseWindow(window);
+	//	auto translated_pos = window.mapPixelToCoords(mouse_pos);
+	//	auto contain = ball.getGlobalBounds();
+	//	this->thrust[0].position = ball.getPosition() + sf::Vector2f(contain.width / 2, contain.height / 2);
+	//	this->thrust[1].position = sf::Vector2f(float(translated_pos.x), float(translated_pos.y));
+	//	this->a_pull_force = Vector2D(thrust[1].position - thrust[0].position).normalize() / 50;
+	//}
 	// catch event click on ball and keep control 
 	else if(Mouse::getIntance().getStateMouse(MOUSE::MOUSE_B::LEFT)) {
 		auto mouse_pos = Mouse::getIntance().getMouseWindow(window); // Mouse position relative to the window
@@ -137,22 +158,7 @@ void Ball::process(sf::RenderWindow& window) {
 		}
 	}
 	
-	if(check ==true && state[StateBall::pull_force] 
-		&& !Keyboard::getIntance().getStateKeyBoard(KEYBOARD::KEY_B::CONTROL)) {
-		auto contain = ball.getGlobalBounds();
-		
-		v_pull_force += a_pull_force;
-		thrust[0].position += v_pull_force.toVec2f();
 
-		obj.loc = thrust[0].position - sf::Vector2f(contain.width / 2, contain.height / 2);
-
-		Vector2D c = Vector2D(thrust[1].position - thrust[0].position);
-
-		if(c.mag() < 7.f) {
-			this->f_pull_force =  v_pull_force.normalize()* v_pull_force.mag()*v_pull_force.mag() * (obj.mass/2);
-			this->resetBallPull();
-		}
-	}
 	if(Keyboard::getIntance().getStateKeyBoard(KEYBOARD::KEY_B::SHIFT)) {
 		f_pull_force.reset();
 		obj.acc.reset();

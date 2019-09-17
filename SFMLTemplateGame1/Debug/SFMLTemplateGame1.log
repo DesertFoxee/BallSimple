@@ -1,4 +1,2 @@
-﻿  Game.cpp
-  Keyboard.cpp
-  Generating Code...
-  SFMLTemplateGame1.vcxproj -> F:\SFML\Ball\BallSimple.git\trunk\Debug\GameBall.exe
+﻿  Ball.cpp
+  SFMLTemplateGame1.vcxproj -> F:\SFML\Ball\trunk\Debug\GameBall.exe
